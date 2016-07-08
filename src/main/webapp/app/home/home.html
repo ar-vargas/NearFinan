@@ -1,22 +1,24 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
+        <div class="col-md-12">
+            <span class="nearsoft-logo center-logo"></span>
         </div>
-        <div class="col-md-8">
-            <h1>NearFinan</h1>
-            <p class="lead">Get your docs easily</p>
+        <div class="col-md-12">
+            <div class="login-form center-home">
+                <h1>NearFinance</h1>
+                <p class="lead">Get your docs easily</p>
 
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true">
-                    You are logged in as user "{{vm.account.login}}".
-                </div>
+                <div ng-switch="vm.isAuthenticated()">
+                    <div class="alert alert-success" ng-switch-when="true">
+                        You are logged in as user "{{vm.account.login}}".
+                    </div>
 
-                <div class="alert alert-warning" ng-switch-when="false">
-                    <jh-social ng-provider="google"></jh-social>
+                    <div class="alert alert-warning" ng-switch-when="false">
+                        <jh-social ng-provider="google"></jh-social>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
+
 </div>

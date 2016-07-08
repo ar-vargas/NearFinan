@@ -76,6 +76,39 @@ Browser Upgrade Prompt
     background-size: contain;
 }
 
+.nearsoft-logo {
+    display: table-cell;
+    width      : 30vw;
+    height     : 10vw;
+    max-width  : 30em;
+    max-height : 15em;
+    background: url("../images/nearsoft-logo.png") no-repeat;
+    background-size: contain;
+}
+.center-logo {
+  display     : block;
+  margin-left : 28%;
+  margin-right: 25%;
+  text-align  : center;
+}
+
+.center-home{
+  margin-left  : 28%;
+  margin-right : 25%;
+  text-align   : center;
+}
+
+.center {
+    margin-left  : 25%;
+    margin-right : 25%;
+    text-align   : center;
+}
+
+.login-form {
+    width : 500px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 .pad {
     padding: 10px;
 }
@@ -213,9 +246,9 @@ Social Buttons
 }
 
 .jh-btn-google {
-    background-color: #dd4b39;
-    border-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    background-color  : #dd4b39;
+    border-color      : rgba(0, 0, 0, 0.2);
+    color             : #fff;
 }
 
 .jh-btn-google:hover, .jh-btn-google:focus, .jh-btn-google:active, .jh-btn-google.active, .open > .dropdown-toggle.jh-btn-google {
