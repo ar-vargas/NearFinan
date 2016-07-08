@@ -6,6 +6,7 @@ import com.nearsoft.neardocs.domain.User;
 import com.nearsoft.neardocs.security.SecurityUtils;
 import com.nearsoft.neardocs.service.ReceiptService;
 import com.nearsoft.neardocs.web.rest.util.HeaderUtil;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -16,7 +17,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -111,6 +116,33 @@ public class ReceiptResource {
     public ResponseEntity<Receipt> getReceipt(@PathVariable Long id) {
         log.debug("REST request to get Receipt : {}", id);
         Receipt receipt = receiptService.findOne(id);
+        return Optional.ofNullable(receipt)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /receipts/:id : get the "id" receipt.
+     *
+     * @param id the id of the receipt to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the receipt, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/receipts/download/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Receipt> downloadReceipt(@PathVariable Long id, HttpServletResponse response) throws IOException {
+        log.debug("REST request to download Receipt : {}", id);
+
+        String email = SecurityUtils.getCurrentUserLogin();
+        Receipt receipt = receiptService.findOne(email, id);
+
+        InputStream is = new ByteArrayInputStream(receipt.getPath().getBytes());
+        IOUtils.copy(is, response.getOutputStream());
+        response.flushBuffer();
+        is.close();
         return Optional.ofNullable(receipt)
             .map(result -> new ResponseEntity<>(
                 result,
