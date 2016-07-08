@@ -9,10 +9,9 @@
 
     function SocialRegisterController ($filter, $stateParams) {
         var vm = this;
-
-        vm.error = !vm.success;
         vm.provider = $stateParams.provider;
         vm.providerLabel = $filter('capitalize')(vm.provider);
         vm.success = $stateParams.success;
+        vm.error = !vm.success;
     }
 })();
