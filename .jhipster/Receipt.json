@@ -1,0 +1,46 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "owner",
+            "otherEntityName": "nearsoftnian",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "email"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "path",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1990",
+            "fieldValidateRulesMax": "3000"
+        },
+        {
+            "fieldName": "month",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "12"
+        }
+    ],
+    "changelogDate": "20160707202122",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "receipt",
+    "pagination": "no"
+}

@@ -1,0 +1,46 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "ownedReceipt",
+            "otherEntityName": "receipt",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "owner"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lastName2",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160707201848",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "nearsoftnian",
+    "pagination": "no"
+}

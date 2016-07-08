@@ -1,0 +1,92 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myReceiptLabel">Create or edit a Receipt</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.receipt.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.receipt.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_path">Path</label>
+            <input type="text" class="form-control" name="path" id="field_path"
+                    ng-model="vm.receipt.path"
+                    required />
+            <div ng-show="editForm.path.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.path.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_year">Year</label>
+            <input type="number" class="form-control" name="year" id="field_year"
+                    ng-model="vm.receipt.year"
+                    required min="1990" max="3000" />
+            <div ng-show="editForm.year.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.year.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.year.$error.min" translate-value-min="1990">
+                    This field should be more than 1990.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.year.$error.max">
+                    This field cannot be more than 3000.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.year.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_month">Month</label>
+            <input type="number" class="form-control" name="month" id="field_month"
+                    ng-model="vm.receipt.month"
+                    required min="1" max="12" />
+            <div ng-show="editForm.month.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.month.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.month.$error.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.month.$error.max">
+                    This field cannot be more than 12.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.month.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" ng-model="vm.receipt.owner" ng-options="nearsoftnian as nearsoftnian.email for nearsoftnian in vm.nearsoftnians track by nearsoftnian.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
