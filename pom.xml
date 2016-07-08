@@ -382,11 +382,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-facebook</artifactId>
-            <version>${spring-social-facebook.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-google</artifactId>
             <version>${spring-social-google.version}</version>
         </dependency>
@@ -394,11 +389,6 @@
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-security</artifactId>
             <version>${spring-social-security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-twitter</artifactId>
-            <version>${spring-social-twitter.version}</version>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
 
