@@ -60,6 +60,19 @@ public class ReceiptService {
     }
 
     /**
+     *  Get one receipt by id for logged user.
+     *
+     *  @param id the id of the entity
+     *  @return the entity
+     */
+    @Transactional(readOnly = true)
+    public Receipt findOne(String email, Long id) {
+        log.debug("Request to get Receipt : {}", id);
+        Receipt receipt = receiptRepository.findOne(email, id);
+        return receipt;
+    }
+
+    /**
      *  Delete the  receipt by id.
      *
      *  @param id the id of the entity
@@ -78,4 +91,6 @@ public class ReceiptService {
         List<Receipt> result = receiptRepository.findReceiptsByNearsoftnianId(email);
         return result;
     }
+
+
 }

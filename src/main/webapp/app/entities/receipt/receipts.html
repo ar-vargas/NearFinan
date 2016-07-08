@@ -1,13 +1,13 @@
 <div>
-    <h2>Receipts</h2>
+    <h2>Payslips</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="receipt.new" >
+                <button style="visibility:hidden;" class="btn btn-primary" ui-sref="receipt.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
-                        Create new Receipt
+                        Create new Payslip
                     </span>
                 </button>
             </div>
@@ -27,9 +27,10 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr ng-repeat="receipt in vm.receipts track by receipt.id">
                     <td><a ui-sref="receipt-detail({id:receipt.id})">{{receipt.id}}</a></td>
-                    <td>{{receipt.path}}</td>
+                    <td><a href="file://{{receipt.path}}" download="{{receipt.year}}-{{receipt.month}}">Payslip for {{receipt.year}}-{{receipt.month}}</a></td>
                     <td>{{receipt.year}}</td>
                     <td>{{receipt.month}}</td>
                     <td>
@@ -49,7 +50,7 @@
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
-                            <button type="submit"
+                            <button style="visibility:hidden;" type="submit"
                                     ui-sref="receipt.delete({id:receipt.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
